@@ -14,8 +14,53 @@ const rl = readline.createInterface({
 // the function that will be called by the unit test below
 const rockPaperScissors = (hand1, hand2) => {
 
-  // Write code here
-  // Use the unit test to see what is expected
+  hand1 = hand1.toLowerCase().trim();
+  hand2 = hand2.toLowerCase().trim();
+
+  const hand1Wins = `Hand one wins!`
+  const hand2Wins = `Hand two wins!`
+  const hand1InvalidInput = `The input for ${hand1} is not allowed. Please use rock, paper, or scissors for hand 1`
+  const hand2InvalidInput = `The input for ${hand2} is not allowed. Please use rock, paper, or scissors for hand 2`
+  const tiedHand = `It's a tie!`
+
+  switch (true ) {
+
+    // If Hand 1 or Hand 2 is outside of params
+    case (hand1 != 'rock' && hand1 != 'scissors' && hand1 != 'paper'):
+      return hand1InvalidInput
+      break;
+    case (hand2 != 'rock' && hand2 != 'scissors' && hand2 != 'paper'):
+      return hand2InvalidInput
+      break;
+
+    //If Hand 1 and Hand 2 tie 
+    case (hand1 === hand2):
+      return tiedHand
+      break;
+
+    //If Hand 1 Wins
+    case (hand1 == 'rock' && hand2 == 'scissors'):
+      return hand1Wins
+      break;
+    case (hand1 == 'paper' && hand2 == 'rock'):
+      return hand1Wins
+      break;
+    case (hand1 == 'scissors' && hand2 == 'paper'):
+      return hand1Wins
+      break;
+
+    // If Hand 2 Wins
+    case (hand1 == 'scissors' && hand2 == 'rock'):
+      return hand2Wins
+      break;
+    case (hand1 == 'rock' && hand2 == 'paper'):
+      return hand2Wins
+      break;
+    case (hand1 == 'paper' && hand2 == 'scissors'):
+      return hand2Wins
+      break;
+
+  }
 
 }
 
